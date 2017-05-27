@@ -5,3 +5,9 @@ db.json
 node_modules/
 public/
 .deploy*/
+dist/
+npm-debug.log
+selenium-debug.log
+test/unit/coverage
+test/e2e/reports
+source/assets/
