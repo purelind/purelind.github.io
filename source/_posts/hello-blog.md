@@ -1,10 +1,8 @@
 ---
 title: Hello-Blog
 date: 2017-05-27 09:35:05
-categories:
-- tags
-- 笔记
 tags:
+- "Diary"
 - hello world
 - first post
 ---
