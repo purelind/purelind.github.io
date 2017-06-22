@@ -14,5 +14,6 @@ Powered with 1: github.io 2: Hexo 3: Yilia 4: qiniu.com
 About me: graduate, EE-->CS, on learning java and python, etc.
 who want to know new things and read amazing book and take more chanllenge.
 
+<!--more-->
 Thanks for your visit ~
 More articles comming soon......
