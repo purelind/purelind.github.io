@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://purelind.com">
-  <title>Tag: G4560 | purelind</title>
+  <title>Algs4 Java environment setting on debian8.8 | purelind</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="blog note">
-<meta property="og:type" content="website">
-<meta property="og:title" content="purelind">
-<meta property="og:url" content="http://purelind.com/tags/G4560/index.html">
+  <meta name="description" content="这是我使用Debian系统配置Algorithm Part I 课程需要的Java环境的一些记录，之前保存在自己的OneNote笔记中，现在将其整理为md文件。系统配置如下：  Linux debian8.8 系统内核： 4.11.3">
+<meta name="keywords" content="java,algs4,deiban8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algs4 Java environment setting on debian8.8">
+<meta property="og:url" content="http://purelind.com/2017/06/21/algs4-debian8.8/index.html">
 <meta property="og:site_name" content="purelind">
-<meta property="og:description" content="blog note">
+<meta property="og:description" content="这是我使用Debian系统配置Algorithm Part I 课程需要的Java环境的一些记录，之前保存在自己的OneNote笔记中，现在将其整理为md文件。系统配置如下：  Linux debian8.8 系统内核： 4.11.3">
+<meta property="og:updated_time" content="2017-06-22T06:34:39.064Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="purelind">
-<meta name="twitter:description" content="blog note">
+<meta name="twitter:title" content="Algs4 Java environment setting on debian8.8">
+<meta name="twitter:description" content="这是我使用Debian系统配置Algorithm Part I 课程需要的Java环境的一些记录，之前保存在自己的OneNote笔记中，现在将其整理为md文件。系统配置如下：  Linux debian8.8 系统内核： 4.11.3">
   
     <link rel="alternative" href="/atom.xml" title="purelind" type="application/atom+xml">
   
@@ -146,72 +148,230 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-algs4-debian8.8" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/03/new-computer-618/" class="archive-article-date">
-  	<time datetime="2017-06-03T14:46:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/03/new-computer-618/">购置的台式电脑</a>
+    <h1 class="article-title" itemprop="name">
+      Algs4 Java environment setting on debian8.8
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/06/21/algs4-debian8.8/" class="archive-article-date">
+  	<time datetime="2017-06-21T14:45:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是我使用Debian系统配置Algorithm Part I 课程需要的Java环境的一些记录，之前保存在自己的OneNote笔记中，现在将其整理为md文件。<br>系统配置如下：</p>
+<ul>
+<li>Linux debian8.8</li>
+<li>系统内核： 4.11.3</li>
+</ul>
+<a id="more"></a>
+<p>官方的Linux环境配置在这：<a href="http://algs4.cs.princeton.edu/linux/" target="_blank" rel="external">Hello World in Java on Linux</a>.<br>但是我在根据以上配置的时候，出现了一些问题，后来google将问题解决了，所以做个笔记。</p>
+<h2 id="0-install-Java"><a href="#0-install-Java" class="headerlink" title="0. install Java"></a>0. install Java</h2><p>You will use the Java Platform, Standard Edition Development Kit (JDK 8).<br>需要使用JDK8, 可以查新一下系统现在的使用的哪个版本：</p>
+<pre><code>[username:~/] javac -version
+javac 1.7.0_111
+[username:~/] java -version
+java version &quot;1.7.0_111&quot;
+Java(TM) SE Runtime Environment (build 1.7.0_111-b14)
+Java HotSpot(TM) 64-Bit Server VM (build 25.111-b14, mixed mode)
+</code></pre><p>系统包管理器java的版本过低.<br>Install the Java Platform, Standard Edition Development Kit (JDK 8), either from Oracle or OpenJDK.</p>
+<pre><code>[username:~/] sudo add-apt-repository ppa:webupd8team/java
+[username:~/] sudo apt-get update
+[username:~/] sudo apt-get install oracle-java8-installer
+[username:~/] sudo apt-get install oracle-java8-set-default
+</code></pre><p>这一步安装JDK8按照以上步骤我的系统会报错，后来找到了<a href="http://www.webupd8.org/2014/03/how-to-install-oracle-java-8-in-debian.html" target="_blank" rel="external">解决办法</a>：</p>
+<pre><code>[username:~/] su -
+[username:~/] echo &quot;deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main&quot; | tee /etc/apt/sources.list.d/webupd8team-java.list
+[username:~/] echo &quot;deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main&quot; | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+[username:~/] apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+[username:~/] apt-get update
+[username:~/] apt-get install oracle-java8-installer
+[username:~/] exit
+</code></pre><p>确定JDK8是否安装好：</p>
+<pre><code>[username:~/] javac -version
+javac 1.8.0_131
+[username:~/] java -version
+java version &quot;1.8.0_131&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_131-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.131-b11, mixed mode)
+</code></pre><p>现在JDK8已经安装完毕。</p>
+<h2 id="1-Install-a-Programming-Environment"><a href="#1-Install-a-Programming-Environment" class="headerlink" title="1.   Install a Programming Environment"></a>1.   Install a Programming Environment</h2><p>  Create a directory /usr/local/algs4. 创建目录 /usr/local/algs4</p>
+<pre><code>[username:~/] cd /usr/local
+[username:/usr/local] sudo mkdir algs4
+[username:/usr/local] sudo chmod 755 algs4
+</code></pre><p> Navigate to the subdirectory /usr/local/algs4. 转到 /usr/local/algs4目录下</p>
+<pre><code>[username:/usr/local] cd algs4
+[username:/usr/local/algs4] pwd
+/usr/local/algs4
+</code></pre><p> Download the textbook libraries from algs4.jar and the Java wrapper scripts from javac-algs4 and java-algs4. 下载库文件algs4.jar 和javac-algs4、java-algs4 俩个scripts,这样以后在Terminal下就能愉快的 javac-algs4 helloworld.java 和 java-algs4 helloworld.</p>
+<pre><code>[username:/usr/local/algs4] sudo wget http://algs4.cs.princeton.edu/code/algs4.jar
+[username:/usr/local/algs4] sudo wget http://algs4.cs.princeton.edu/linux/javac-algs4
+[username:/usr/local/algs4] sudo wget http://algs4.cs.princeton.edu/linux/java-algs4
+[username:/usr/local/algs4] sudo chmod 755 javac-algs4 java-algs4
+[username:/usr/local/algs4] sudo mv javac-algs4 /usr/local/bin
+[username:/usr/local/algs4] sudo mv java-algs4 /usr/local/bin
+</code></pre><p> Download DrJava from drjava.jar, the wrapper script from drjava, and the configuration file from .drjava.下载drjava,这是一个Java开发环境</p>
+<pre><code>[username:/usr/local/algs4] sudo wget http://algs4.cs.princeton.edu/linux/drjava.jar
+[username:/usr/local/algs4] sudo wget http://algs4.cs.princeton.edu/linux/drjava
+[username:/usr/local/algs4] sudo wget http://algs4.cs.princeton.edu/linux/.drjava
+[username:/usr/local/algs4] sudo chmod 755 drjava
+[username:/usr/local/algs4] sudo mv drjava /usr/local/bin
+[username:/usr/local/algs4] sudo mv .drjava ~
+</code></pre><p><strong>！！！**</strong>Attention**, 这里需要注意： 执行完以上命令之后，你需要：</p>
+<pre><code>[username:/usr/local/algs4] sudo chgrp username ~/.drjava
+[username:/usr/local/algs4] sudo chown username ~/.drjava
+</code></pre><p>将.drjava文件的用户组和用户更改为你自己，我们下载.java的时候，将其所有属性复制了，如果不进行更改，使用drjava的时候，进行个性化设置的时候后出现IO错误！！！</p>
+<p>Download Checkstyle 7.4 from checkstyle.zip; our Checkstyle configuration file from checkstyle-algs4.xml; and the Checkstyle wrapper script from from checkstyle-algs4，下载Checkstyle</p>
+<pre><code>[username:/usr/local/algs4/] sudo wget http://algs4.cs.princeton.edu/linux/checkstyle.zip
+[username:/usr/local/algs4/] sudo wget http://algs4.cs.princeton.edu/linux/checkstyle-algs4.xml
+[username:/usr/local/algs4/] sudo wget http://algs4.cs.princeton.edu/linux/checkstyle-suppressions.xml
+[username:/usr/local/algs4/] sudo wget http://algs4.cs.princeton.edu/linux/checkstyle-algs4
+[username:/usr/local/algs4/] sudo unzip checkstyle.zip
+[username:/usr/local/algs4/] sudo chmod 755 checkstyle-algs4
+[username:/usr/local/algs4/] sudo mv checkstyle-algs4 /usr/local/bin
+</code></pre><p>Download Findbugs 3.0.1 from findbugs.zip; our Findbugs configuration file from findbugs.xml; and the Findbugs wrapper script from findbugs-algs4.下载findbugs.</p>
+<pre><code>[username:/usr/local/algs4/] sudo wget http://algs4.cs.princeton.edu/linux/findbugs.zip
+[username:/usr/local/algs4/] sudo wget http://algs4.cs.princeton.edu/linux/findbugs.xml
+[username:/usr/local/algs4/] sudo wget http://algs4.cs.princeton.edu/linux/findbugs-algs4
+[username:/usr/local/algs4/] sudo unzip findbugs.zip
+[username:/usr/local/algs4/] sudo chmod 755 findbugs-algs4
+[username:/usr/local/algs4/] sudo mv findbugs-algs4 /usr/local/bin
+</code></pre><p>For these wrapper scripts to work, it is important that /usr/local/bin is in your PATH environment variable. This is very likely the case. If not, see the Troubleshooting section below.</p>
+<p>之后按照官方的教程熟悉如何使用drjava, algs4-javac, algs4-java, findbugs, checkstyle.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">台式机</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">装机</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">algs4</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">G4560</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">海韵G550</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">deiban8</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://purelind.com/2017/06/21/algs4-debian8.8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/06/03/new-computer-618/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">购置的台式电脑</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
 
 
           </div>
@@ -234,9 +394,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
